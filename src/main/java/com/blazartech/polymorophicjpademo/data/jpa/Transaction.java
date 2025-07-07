@@ -36,7 +36,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "TransId")
-    private Long transId;
+    private Long transactionId;
     
     @Column(name = "TransEffDte")
     private LocalDate effectiveDate;
