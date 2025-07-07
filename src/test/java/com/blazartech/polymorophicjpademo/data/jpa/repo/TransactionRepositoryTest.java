@@ -73,13 +73,11 @@ public class TransactionRepositoryTest {
     public void setUp() {
         TransactionDetailsType1 detail1 = new TransactionDetailsType1();
         detail1.setClientName("Henrietta Schmoop");
-        detail1.setDetailType(1);
         detail1.setGeneratingAmount(BigDecimal.TEN);
         
         TransactionDetailsType2 detail2 = new TransactionDetailsType2();
         detail2.setRate(BigDecimal.ONE);
         detail2.setRateType("flat");
-        detail2.setDetailType(2);
 
         Transaction t1 = new Transaction();
         t1.setAmount(new BigDecimal("51.50"));
@@ -117,6 +115,18 @@ public class TransactionRepositoryTest {
         
         Transaction firstTrans = result.iterator().next();
         assertTrue(firstTrans.getDetails() instanceof TransactionDetailsType1);
+    }
+    
+    @Test
+    public void testFindByDetailType_notFound() {
+        log.info("findByDetailType_notFound");
+        
+        int detailType = 3;
+        Collection<Transaction> result = instance.findByDetailType(detailType);
+        
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+
     }
     
     // unit test to verify the data is saved correctly in the setUp

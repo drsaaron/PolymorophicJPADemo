@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  *
@@ -22,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
-@NoArgsConstructor
 public class TransactionDetailsType1 extends TransactionDetails {
     
     @Column(name = "ClntNam")
@@ -30,4 +28,10 @@ public class TransactionDetailsType1 extends TransactionDetails {
     
     @Column(name = "GenAmt")
     private BigDecimal generatingAmount;
+
+    public TransactionDetailsType1() {
+        setDetailType(1);
+    }
+    
+    
 }

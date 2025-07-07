@@ -17,6 +17,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 
 /**
  *
@@ -41,8 +42,11 @@ public abstract class TransactionDetails {
     @Column(name = "TransDtlId")
     private Long transactionDetailId;
     
+    /**
+     * the detail type.  Each type class should set this value in its constructor
+     */
     @Column(name = "DtlTypCde")
-    private int detailType;
+    @Getter private int detailType;
     
     @Column(name = "TransId")
     private Long transactionId;

@@ -22,7 +22,6 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
-@NoArgsConstructor
 public class TransactionDetailsType2 extends TransactionDetails {
     
     @Column(name = "Rate")
@@ -30,4 +29,10 @@ public class TransactionDetailsType2 extends TransactionDetails {
     
     @Column(name = "RateTypCde")
     private String rateType;
+
+    public TransactionDetailsType2() {
+        setDetailType(2);
+    }
+    
+    
 }
