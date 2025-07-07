@@ -58,6 +58,10 @@ public class CreateDataCommandLineRunner implements CommandLineRunner {
         // save
         log.info("saving transactions {}", transactions);
         transRepo.saveAll(transactions);
+        
+        // need to manually set the transaction ID on each detail record.  Not good
+        transactions.forEach(t -> t.getDetails().setTransactionId(t.getTransId()));
+        transRepo.saveAll(transactions);
     }
     
 }

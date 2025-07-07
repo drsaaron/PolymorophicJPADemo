@@ -4,7 +4,6 @@
  */
 package com.blazartech.polymorophicjpademo;
 
-import com.blazartech.polymorophicjpademo.data.jpa.Transaction;
 import jakarta.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
@@ -18,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 /**
@@ -82,11 +80,13 @@ public class DumpRawDataCommandLineRunner implements CommandLineRunner {
         TransactionDetailsType1View view = new TransactionDetailsType1View();
         view.setClientName(rs.getString("ClntNam"));
         view.setGeneratingAmount(rs.getBigDecimal("GenAmt"));
+        view.setId(rs.getLong("TransDtlId"));
         return view;
     }
     
     @Data 
     private static class TransactionDetailsType2View {
+        private Long id;
         private BigDecimal rate;
         private String rateType;
     }
@@ -95,6 +95,7 @@ public class DumpRawDataCommandLineRunner implements CommandLineRunner {
         TransactionDetailsType2View view = new TransactionDetailsType2View();
         view.setRate(rs.getBigDecimal("Rate"));
         view.setRateType(rs.getString("RateTypCde"));
+        view.setId(rs.getLong("TransDtlId"));
         return view;
     }
     
