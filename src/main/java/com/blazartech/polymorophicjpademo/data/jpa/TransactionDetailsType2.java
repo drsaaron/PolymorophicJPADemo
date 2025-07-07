@@ -5,7 +5,6 @@
 package com.blazartech.polymorophicjpademo.data.jpa;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
@@ -20,7 +19,6 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @Table(name = "TransDtlTyp2")
-@DiscriminatorValue("2")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor

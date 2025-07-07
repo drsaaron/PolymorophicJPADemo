@@ -79,6 +79,7 @@ public class TransactionRepositoryTest {
         TransactionDetailsType2 detail2 = new TransactionDetailsType2();
         detail2.setRate(BigDecimal.ONE);
         detail2.setRateType("flat");
+        detail2.setDetailType(2);
 
         Transaction t1 = new Transaction();
         t1.setAmount(new BigDecimal("51.50"));
