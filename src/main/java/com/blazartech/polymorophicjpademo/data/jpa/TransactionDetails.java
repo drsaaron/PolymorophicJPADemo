@@ -4,6 +4,9 @@
  */
 package com.blazartech.polymorophicjpademo.data.jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +27,12 @@ import lombok.Data;
 @Inheritance(strategy = InheritanceType.JOINED)
 //@DiscriminatorColumn(name = "DtlTypCde", discriminatorType = DiscriminatorType.INTEGER)
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = TransactionDetailsType1.class, name = "TransactionDetailsType1"),
+    @JsonSubTypes.Type(value = TransactionDetailsType2.class, name = "TransactionDetailsType2")}
+)
 public abstract class TransactionDetails {
     
     @Id
