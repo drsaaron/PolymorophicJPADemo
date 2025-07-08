@@ -12,6 +12,7 @@ import com.blazartech.polymorophicjpademo.data.jpa.Transaction;
 import com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType1;
 import com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType2;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolationException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -141,5 +142,20 @@ public class TransactionRepositoryTest {
         assertEquals(2, transactions.size());
         assertTrue(transactions.get(0).getDetails() instanceof TransactionDetailsType1);
         assertTrue(transactions.get(1).getDetails() instanceof TransactionDetailsType2);
+    }
+    
+    /* validate bean validation, namely that an exception is thrown when
+       trying to persist an object in an invalid state, in thise case with
+       no details.
+    */
+    @Test
+    public void testBeanValidation() {
+        log.info("bean validation");
+        
+        Transaction t = new Transaction();
+        t.setAmount(BigDecimal.ONE);
+        t.setEffectiveDate(LocalDate.now());
+        
+        assertThrows(ConstraintViolationException.class, () -> instance.save(t));
     }
 }

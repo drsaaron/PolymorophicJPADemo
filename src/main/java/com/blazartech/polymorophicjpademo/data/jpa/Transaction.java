@@ -16,6 +16,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import lombok.Data;
@@ -41,13 +42,16 @@ public class Transaction {
     private Long transactionId;
     
     @Column(name = "TransEffDte")
+    @NotNull
     private LocalDate effectiveDate;
     
     @Column(name = "TransAmt")
+    @NotNull
     private BigDecimal amount;
     
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "TransId", referencedColumnName = "TransId")
+    @NotNull
     private TransactionDetails details;
  
 }
