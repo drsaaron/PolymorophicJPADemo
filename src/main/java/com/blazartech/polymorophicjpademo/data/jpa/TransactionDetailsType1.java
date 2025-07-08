@@ -13,7 +13,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- *
+ * one type of detail
+ * 
  * @author aar1069
  */
 @Entity

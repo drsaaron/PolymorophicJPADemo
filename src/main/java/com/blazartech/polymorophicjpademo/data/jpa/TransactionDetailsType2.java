@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
- *
+ * another type of detail
+ * 
  * @author aar1069
  */
 @Entity

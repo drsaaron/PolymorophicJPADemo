@@ -21,17 +21,18 @@ import lombok.Data;
 import lombok.Setter;
 
 /**
- *
+ * Base class for the transaction details.
+ * 
  * @author aar1069
  */
 @Entity
 @Table(name = "TransDtl")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED) // use child tables for the data, other options available
 //@DiscriminatorColumn(name = "DtlTypCde", discriminatorType = DiscriminatorType.INTEGER)
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-@JsonSubTypes({
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY) // include a type indicator in teh JSON
+@JsonSubTypes({ // map type indicators to the appropriate class
     @JsonSubTypes.Type(value = TransactionDetailsType1.class, name = "TransactionDetailsType1"),
     @JsonSubTypes.Type(value = TransactionDetailsType2.class, name = "TransactionDetailsType2")}
 )

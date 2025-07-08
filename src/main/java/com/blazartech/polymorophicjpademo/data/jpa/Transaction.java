@@ -21,7 +21,9 @@ import java.time.LocalDate;
 import lombok.Data;
 
 /**
- *
+ * The main transaction class.  It will have a few common pieces of data and
+ * details derived from the @see{TransactionDetails} class.
+ * 
  * @author aar1069
  */
 @Entity
