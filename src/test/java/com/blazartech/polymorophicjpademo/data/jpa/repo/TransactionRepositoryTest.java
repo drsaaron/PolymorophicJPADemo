@@ -31,6 +31,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
@@ -72,29 +73,6 @@ public class TransactionRepositoryTest {
     
     @BeforeEach
     public void setUp() {
-        TransactionDetailsType1 detail1 = new TransactionDetailsType1();
-        detail1.setClientName("Henrietta Schmoop");
-        detail1.setGeneratingAmount(BigDecimal.TEN);
-        
-        TransactionDetailsType2 detail2 = new TransactionDetailsType2();
-        detail2.setRate(BigDecimal.ONE);
-        detail2.setRateType("flat");
-
-        Transaction t1 = new Transaction();
-        t1.setAmount(new BigDecimal("51.50"));
-        t1.setEffectiveDate(LocalDate.parse("2025-06-01"));
-        t1.setDetails(detail1);
-        
-        Transaction t2 = new Transaction();
-        t2.setAmount(new BigDecimal("52"));
-        t2.setDetails(detail2);
-        t2.setEffectiveDate(LocalDate.parse("2025-07-15"));
-        
-        List<Transaction> transactions = List.of(t1, t2);
-        
-        // save
-        log.info("saving transactions {}", transactions);
-        instance.saveAll(transactions);
     }
     
     @AfterEach
@@ -105,6 +83,7 @@ public class TransactionRepositoryTest {
      * Test of findByDetailType method, of class TransactionRepository.
      */
     @Test
+    @Sql("/repoTest.sql")
     public void testFindByDetailType() {
         log.info("findByDetailType");
         
@@ -119,6 +98,7 @@ public class TransactionRepositoryTest {
     }
     
     @Test
+    @Sql("/repoTest.sql")
     public void testFindByDetailType_notFound() {
         log.info("findByDetailType_notFound");
         
@@ -132,6 +112,7 @@ public class TransactionRepositoryTest {
     
     // unit test to verify the data is saved correctly in the setUp
     @Test
+    @Sql("/repoTest.sql")
     public void testAddAll() {
         log.info("add all");
         
