@@ -16,6 +16,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -48,6 +50,8 @@ public abstract class TransactionDetails {
      * the detail type.  Each type class should set this value in its constructor
      */
     @Column(name = "DtlTypCde")
+    @Min(value = 1)
+    @Max(value = 2)
     @Setter(AccessLevel.PROTECTED) private int detailType;
     
     @Column(name = "TransId")
