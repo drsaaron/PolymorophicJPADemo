@@ -8,8 +8,6 @@ import com.blazartech.polymorophicjpademo.data.jpa.Transaction;
 import com.blazartech.polymorophicjpademo.data.jpa.repo.TransactionRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import jakarta.annotation.PostConstruct;
 import java.util.stream.StreamSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +27,8 @@ public class JsonifyTransactionsCommandLineRunner implements CommandLineRunner {
     @Autowired
     private TransactionRepository transRepo;
     
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    
-    @PostConstruct
-    public void fixObjectMapper() {
-        objectMapper.registerModule(new JavaTimeModule());
-    }
+    @Autowired
+    private ObjectMapper objectMapper;
     
     private String toJson(Transaction t) {
         try {
