@@ -21,6 +21,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -58,7 +59,8 @@ public abstract class TransactionDetails {
     @Setter(AccessLevel.PROTECTED) private int detailType;
     
     @JoinColumn(name = "TransId", referencedColumnName = "TransId")
-    @OneToOne(optional = true)
+    @OneToOne(optional = false)
+    @NotNull
     @JsonIgnore
-    private Transaction transactionId;
+    private Transaction transaction;
 }

@@ -47,20 +47,18 @@ public class CreateDataCommandLineRunner implements CommandLineRunner {
         t1.setAmount(new BigDecimal("51.50"));
         t1.setEffectiveDate(LocalDate.parse("2025-06-01"));
         t1.setDetails(detail1);
+        detail1.setTransaction(t1);
         
         Transaction t2 = new Transaction();
         t2.setAmount(new BigDecimal("52"));
         t2.setDetails(detail2);
         t2.setEffectiveDate(LocalDate.parse("2025-07-15"));
+        detail2.setTransaction(t2);
         
         List<Transaction> transactions = List.of(t1, t2);
         
         // save
         log.info("saving transactions {}", transactions);
-        transRepo.saveAll(transactions);
-        
-        // need to manually set the transaction ID on each detail record.  Not good
-        transactions.forEach(t -> t.getDetails().setTransactionId(t));
         transRepo.saveAll(transactions);
     }
     
