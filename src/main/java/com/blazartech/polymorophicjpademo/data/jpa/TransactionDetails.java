@@ -4,6 +4,7 @@
  */
 package com.blazartech.polymorophicjpademo.data.jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -15,6 +16,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -54,6 +57,8 @@ public abstract class TransactionDetails {
     @Max(value = 2)
     @Setter(AccessLevel.PROTECTED) private int detailType;
     
-    @Column(name = "TransId")
-    private Long transactionId;
+    @JoinColumn(name = "TransId", referencedColumnName = "TransId")
+    @OneToOne(optional = true)
+    @JsonIgnore
+    private Transaction transactionId;
 }
