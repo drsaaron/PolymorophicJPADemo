@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 /**
  *
@@ -28,7 +28,7 @@ public class CallRestCommandLineRunner implements CommandLineRunner {
     @Autowired
     private TransactionRepository transRepo;
     
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestClient restClient = RestClient.create();
     
     @Value("${server.port}")
     private int port;
@@ -39,7 +39,11 @@ public class CallRestCommandLineRunner implements CommandLineRunner {
     
     private PostMappingResponse callRest(Transaction t) {
         log.info("making REST call");
-        return restTemplate.postForObject(makeUrl(), t, PostMappingResponse.class);
+        return restClient.post()
+                .uri(makeUrl())
+                .body(t)
+                .retrieve()
+                .body(PostMappingResponse.class);
     }
     
     @Override
