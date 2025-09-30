@@ -3,18 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.blazartech</groupId>
     <artifactId>PolymorophicJPADemo</artifactId>
-    <version>1.0.16-RELEASE</version>
+    <version>1.0.17-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.release>25</maven.compiler.release>
         <exec.mainClass>com.blazartech.polymorophicjpademo.PolymorophicJPADemo</exec.mainClass>
     </properties>
     
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0-M2</version>
+        <version>4.0.0-M3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
         
@@ -110,7 +110,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
+                <version>3.14.1</version>
                 <configuration>
                     <compilerArgs>
                         <arg>-Xlint:unchecked</arg>
@@ -135,7 +135,7 @@
                                     <version>3.6.3</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>21</version>
+                                    <version>25</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
