@@ -6,14 +6,14 @@ package com.blazartech.polymorophicjpademo;
 
 import com.blazartech.polymorophicjpademo.data.jpa.Transaction;
 import com.blazartech.polymorophicjpademo.data.jpa.repo.TransactionRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.stream.StreamSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -33,7 +33,7 @@ public class JsonifyTransactionsCommandLineRunner implements CommandLineRunner {
     private String toJson(Transaction t) {
         try {
             return objectMapper.writeValueAsString(t);
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             throw new RuntimeException("error json-ifying object: " + e.getMessage(), e);
         }
     }
@@ -41,7 +41,7 @@ public class JsonifyTransactionsCommandLineRunner implements CommandLineRunner {
     private Transaction fromJson(String json) {
         try {
             return objectMapper.readValue(json, Transaction.class);
-        } catch (JsonProcessingException ex) {
+        } catch (JacksonException ex) {
             throw new RuntimeException("error reading from json: " + ex.getMessage(), ex);
         }
     }

@@ -4,12 +4,12 @@
 
 package com.blazartech.polymorophicjpademo;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  *
@@ -25,7 +25,7 @@ public class PolymorophicJPADemo {
     @Bean
     public ObjectMapper objectMapper() {
         return JsonMapper.builder()
-                .addModule(new JavaTimeModule())
+//                .addModule(new JavaTimeModule())
                 .build();
     }
 }
