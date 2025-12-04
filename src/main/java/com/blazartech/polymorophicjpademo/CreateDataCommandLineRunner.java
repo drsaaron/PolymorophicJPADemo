@@ -53,6 +53,7 @@ public class CreateDataCommandLineRunner implements CommandLineRunner {
         t2.setAmount(new BigDecimal("52"));
         t2.setDetails(detail2);
         t2.setEffectiveDate(LocalDate.parse("2025-07-15"));
+        t2.setDetails(detail2);
         detail2.setTransaction(t2);
         
         List<Transaction> transactions = List.of(t1, t2);
