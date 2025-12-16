@@ -37,8 +37,7 @@ public class CallRestCommandLineRunner implements CommandLineRunner {
         return "http://localhost:" + Integer.toString(port) + "/transaction";
     }
     
-    private PostMappingResponse callRest(Transaction t) {
-        log.info("making REST call");
+    private PostMappingResponse callRest(Transaction t) {        
         return restClient.post()
                 .uri(makeUrl())
                 .body(t)
