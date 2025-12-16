@@ -4,17 +4,15 @@
  */
 package com.blazartech.polymorophicjpademo.data.jpa.repo;
 
-import com.blazartech.polymorophicjpademo.data.jpa.TransactionDetails;
-import java.util.Collection;
+import com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType1;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
  *
- * @author aar1069
+ * @author scott
  */
-@RepositoryRestResource(collectionResourceRel = "transactionDetails", path = "transactionDetails-hateos")
-public interface TransactionDetailsRepository extends JpaRepository<TransactionDetails, Long> {
+@RepositoryRestResource(collectionResourceRel = "transactionDetailsType1", path = "transactionDetailsType1-hateos")
+public interface TransactionDetailsType1Repository extends JpaRepository<TransactionDetailsType1, Long>{
     
-    Collection<TransactionDetails> findByDetailType(int detailType);
 }
