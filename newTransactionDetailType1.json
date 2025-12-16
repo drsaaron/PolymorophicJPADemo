@@ -1,12 +1,10 @@
 {
-    "details": {
-	"@type": "TransactionDetailsType1",
-	"detailType": 1,
-	"clientName": "Eddie van Halen",
-	"generatingAmount": "10002.50",
-	"transaction": {
-	    "amount": "1000.25",
-	    "effectiveDate": "2025-12-15"
-	}
+    "@type": "TransactionDetailsType1",
+    "detailType": 1,
+    "clientName": "Eddie van Halen",
+    "generatingAmount": "10002.50",
+    "transaction": {
+	"amount": "1000.25",
+	"effectiveDate": "2025-12-15"
     }
 }
