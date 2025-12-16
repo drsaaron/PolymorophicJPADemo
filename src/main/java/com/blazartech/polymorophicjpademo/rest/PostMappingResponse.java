@@ -4,6 +4,7 @@
  */
 package com.blazartech.polymorophicjpademo.rest;
 
+import com.blazartech.polymorophicjpademo.data.jpa.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostMappingResponse {
     
+    private Transaction transaction;
     private String detailClassName;
 }

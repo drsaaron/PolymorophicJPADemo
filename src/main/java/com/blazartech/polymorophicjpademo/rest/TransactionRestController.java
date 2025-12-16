@@ -43,6 +43,6 @@ public class TransactionRestController {
         
         repo.save(transaction);
         
-        return new PostMappingResponse(transaction.getDetails().getClass().toString());
+        return new PostMappingResponse(transaction, transaction.getDetails().getClass().toString());
     }
 }
