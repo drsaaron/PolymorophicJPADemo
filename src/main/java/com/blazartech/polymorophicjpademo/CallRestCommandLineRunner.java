@@ -49,7 +49,7 @@ public class CallRestCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("calling rest for all our transactions");
-        
+
         List<Transaction> transactions = transRepo.findAll();
         transactions.stream()
                 .map(t -> callRest(t))

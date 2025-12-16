@@ -6,6 +6,7 @@ package com.blazartech.polymorophicjpademo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * @author aar1069
  */
 @Component
+@Profile("!hateos")
 @Order(100)
 @Slf4j
 public class ShutdownCommandLineRunner implements CommandLineRunner {
