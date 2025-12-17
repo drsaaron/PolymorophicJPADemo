@@ -4,11 +4,14 @@
  */
 package com.blazartech.polymorophicjpademo.websiteuser.data.jpa;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,11 @@ public class WebsiteUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    @Schema(description = "the user's name")
     private String name;
+    
+    @Email(regexp=".*@.*\\..*", message = "Email should be valid")
+    @Schema(description = "the user's email")
     private String email;
 }
