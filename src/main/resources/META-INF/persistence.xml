@@ -6,6 +6,7 @@
     <class>com.blazartech.polymorophicjpademo.data.jpa.TransactionDetails</class>
     <class>com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType1</class>
     <class>com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType2</class>
+    <class>com.blazartech.polymorophicjpademo.websiteuser.data.jpa.WebsiteUser</class>
     <properties>
       <property name="hibernate.generate_statistics" value="false"/>
       <property name="hibernate.cache.use_structured_entries" value="true"/>
