@@ -8,6 +8,8 @@ import com.blazartech.polymorophicjpademo.data.jpa.Transaction;
 import com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType1;
 import com.blazartech.polymorophicjpademo.data.jpa.TransactionDetailsType2;
 import com.blazartech.polymorophicjpademo.data.jpa.repo.TransactionRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,12 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
+@Tag(name = "non-HATEOS REST operations")
 public class TransactionRestController {
     
     @Autowired
     private TransactionRepository repo;
     
     @PostMapping(path = "/transaction")
+    @Operation(summary = "create a new transaction")
     public PostMappingResponse postTransaction(@RequestBody Transaction transaction) {
         log.info("recieved a post for transaction {}", transaction);
 
