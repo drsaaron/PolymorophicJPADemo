@@ -51,7 +51,7 @@ public class CallRestCommandLineRunner implements CommandLineRunner {
 
         List<Transaction> transactions = transRepo.findAll();
         transactions.stream()
-                .map(t -> callRest(t))
+                .map(this::callRest)
                 .forEach((r -> log.info("got response {}", r)));
     }
     

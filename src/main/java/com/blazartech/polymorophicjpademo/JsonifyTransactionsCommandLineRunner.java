@@ -52,9 +52,9 @@ public class JsonifyTransactionsCommandLineRunner implements CommandLineRunner {
         
         Iterable<Transaction> transactions = transRepo.findAll();
         StreamSupport.stream(transactions.spliterator(), false)
-                .map(t -> toJson(t))
+                .map(this::toJson)
                 .peek(json -> log.info("json-ified transaction {}", json))
-                .map(json -> fromJson(json))
+                .map(this::fromJson)
                 .forEach(t -> log.info("de-json-ified transaction {}", t));
     }
     
